@@ -22,16 +22,16 @@ const Navbar = () => {
 
         <div className="flex items-center gap-6">
           {/* Search Icon */}
-          <button className="p-2 hover:bg-primary-50 rounded-full transition-colors">
+          <button className="p-2 hover:bg-primary-50 rounded-full transition-colors cursor-pointer">
             <Search className="w-5 h-5 text-primary-600" />
           </button>
 
-          <button className="p-2 hover:bg-primary-50 rounded-full transition-colors relative">
+          <button className="p-2 hover:bg-primary-50 rounded-full transition-colors relative cursor-pointer">
             <Bell className="w-5 h-5 text-primary-600" />
             <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-primary-light rounded-full" />
           </button>
 
-          <button className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center hover:bg-primary-700 transition-colors shadow-sm">
+          <button className="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center hover:bg-primary-700 transition-colors shadow-sm cursor-pointer">
             <User className="w-5 h-5 text-white" />
           </button>
         </div>

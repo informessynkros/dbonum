@@ -60,7 +60,7 @@ const TypeCard = ({ title, description, icon: Icon, available, route }: TypeCard
         </p>
 
         {available && (
-          <button className="mt-2 text-primary-600 font-medium text-sm hover:text-primary-700 transition-colors">
+          <button className="mt-2 text-primary-600 font-medium text-sm hover:text-primary-700 transition-colors cursor-pointer">
             Comenzar →
           </button>
         )}

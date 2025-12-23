@@ -1,24 +1,22 @@
 // Componente que nos ayuda con los mensajes de errores en los inputs
 import { CircleX, type LucideIcon } from 'lucide-react'
 import { forwardRef, type InputHTMLAttributes, useRef, useEffect } from 'react'
+import { errorAnimations } from '../../../utils/animations'
 import CustomTextarea from '../input/CustomTextarea'
 import CustomPassword from '../input/CustomPassword'
 import CustomInput from '../input/CustomInput'
-import { errorAnimations } from '@/utils/animations'
-import DatePicker from '../input/date/DatePicker'
-import type { RadioOption } from '../input/radioButton/RadioButtonGroup'
+import RadioButtonGroup from '../input/radioButton/RadioButtonGroup'
+
 
 export interface MessageToastyProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
   error?: string
   icon?: LucideIcon
   onFileSelect?: (file: File | null) => void
-  options?: RadioOption[]
-  name?: string
 }
 
 const MessageToasty = forwardRef<HTMLInputElement, MessageToastyProps>(
-  ({ label, error, icon: Icon, type, onFileSelect, options, name, ...props }, ref) => {
+  ({ label, error, icon: Icon, type, onFileSelect, ...props }, ref) => {
     const errorRef = useRef<HTMLDivElement>(null)
     const previousError = useRef<string | undefined>(undefined)
 
@@ -46,30 +44,10 @@ const MessageToasty = forwardRef<HTMLInputElement, MessageToastyProps>(
       InputComponent = CustomTextarea
     } else if (type === 'password') {
       InputComponent = CustomPassword
-    } else if (type === 'date') { 
-      InputComponent = DatePicker
-    }else {
+    } else if (type === "radio") {
+      InputComponent = RadioButtonGroup
+    } else {
       InputComponent = CustomInput
-    }
-
-    // Filtrar props según el tipo de componente
-    const componentProps: any = {
-      label,
-      icon: Icon,
-      error,
-      ref: ref as any,
-      ...props
-    }
-
-    // Solo pasar onFileSelect si el componente lo necesita
-    if (type === 'file' && onFileSelect) {
-      componentProps.onFileSelect = onFileSelect
-    }
-
-    // Solo pasar options y name si es radio
-    if (type === 'radio') {
-      componentProps.options = options
-      componentProps.name = name
     }
 
     return (
@@ -80,8 +58,6 @@ const MessageToasty = forwardRef<HTMLInputElement, MessageToastyProps>(
           error={error}
           ref={ref as any}
           onFileSelect={onFileSelect}
-          options={options}
-          name={name}
           {...props}
         />
 
@@ -99,7 +75,7 @@ const MessageToasty = forwardRef<HTMLInputElement, MessageToastyProps>(
             marginTop: error ? 4 : 0
           }}
         >
-          <CircleX className="w-4 h-4" />
+          <CircleX className="w-4 h-4 shrink-0" />
           <span>{error}</span>
         </div>
       </div>

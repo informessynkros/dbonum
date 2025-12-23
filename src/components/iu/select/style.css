@@ -1,0 +1,27 @@
+@keyframes checkAppear {
+  from {
+    transform: scale(0) rotate(-90deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+
+.index_z_1 {
+  z-index: 100; /* 9998 */
+}
+
+.index_z_2 {
+  z-index: 200; /* 9999 */
+}
+
+.z_index_3 {
+  z-index: 60; /* 60 */
+}
+
+.z_index_4 {
+  z-index: 70; /* 70 */
+}

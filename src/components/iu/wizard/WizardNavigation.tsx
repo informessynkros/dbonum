@@ -26,7 +26,7 @@ const WizardNavigation = ({
         onClick={onPrevious}
         disabled={isFirstStep}
         className={`
-          flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all
+          flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all cursor-pointer
           ${isFirstStep
             ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -44,7 +44,7 @@ const WizardNavigation = ({
       {isLastStep ? (
         <button
           onClick={onSave}
-          className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all"
+          className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all cursor-pointer"
         >
           <Save className="w-5 h-5" />
           Guardar
@@ -52,7 +52,7 @@ const WizardNavigation = ({
       ) : (
         <button
           onClick={onNext}
-          className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-all"
+          className="flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-all cursor-pointer"
         >
           Siguiente
           <ChevronRight className="w-5 h-5" />

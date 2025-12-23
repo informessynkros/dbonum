@@ -1,7 +1,7 @@
 // Input por defecto
-
 import { type LucideIcon } from 'lucide-react'
 import { forwardRef, type InputHTMLAttributes } from 'react'
+
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string

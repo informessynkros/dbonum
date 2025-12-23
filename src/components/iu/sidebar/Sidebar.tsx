@@ -20,7 +20,7 @@ const NavItem = ({ icon: Icon, label, isActive = false, onClick }: NavItemsProps
       <button
         onClick={onClick}
         className={`
-          w-full flex items-center justify-center p-3 rounded-xl transition-all duration-200
+          w-full flex items-center justify-center p-3 rounded-xl transition-all duration-200 cursor-pointer
           ${isActive
             ? 'bg-primary-50 text-primary-600 shadow-sm'
             : 'text-gray-600 hover:bg-gray-100'
