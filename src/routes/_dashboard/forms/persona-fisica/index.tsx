@@ -2,9 +2,10 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useWizard } from '@/hooks/useWizard'
 import { useRef, useState } from 'react'
 import DatosGenerales, { type DatosGeneralesHandle } from '@/components/forms/persona-fisica/steps/DatosGenerales'
-import type { DatosGeneralesFormData } from '@/schemas/personaFisicaSchema'
+import type { DatosFiscalesFormData, DatosGeneralesFormData } from '@/schemas/personaFisicaSchema'
 import Stepper from '@/components/iu/wizard/Stepper'
 import WizardNavigation from '@/components/iu/wizard/WizardNavigation'
+import DatosFiscales, { type DatosFiscalesHandle } from '@/components/forms/persona-fisica/steps/DatosFiscales'
 
 
 export const Route = createFileRoute('/_dashboard/forms/persona-fisica/')({
@@ -33,11 +34,12 @@ function RouteComponent() {
 
   // Ref para el formulario del paso actual
   const datosGeneralesRef = useRef<DatosGeneralesHandle>(null)
+  const datosFiscalesRef = useRef<DatosFiscalesHandle>(null)
 
   // Estado para guardar todos los datos del formulario
   const [formData, setFormData] = useState<{
     datosGenerales?: DatosGeneralesFormData
-    // Aquí agregaremos los demás pasos después
+    datosFiscales?: DatosFiscalesFormData
   }>({})
 
   // Handler para cuando se completa Datos Generales
@@ -47,6 +49,13 @@ function RouteComponent() {
     goToNextStep()
   }
 
+    // Handler para cuando se completa Datos Fiscales
+    const handleDatosFiscalesSubmit = (data: DatosFiscalesFormData) => {
+      console.log('✅ Datos Fiscales guardados:', data)
+      setFormData(prev => ({ ...prev, datosFiscales: data }))
+      goToNextStep()
+    }
+
   // Handler final para guardar todo
   const handleSave = () => {
     console.log('💾 Guardando formulario completo:', formData)
@@ -55,18 +64,19 @@ function RouteComponent() {
 
   // Handler para el botón "Siguiente"
   const handleNext = async () => {
-    // Si estamos en paso 1, hacer submit del formulario
     if (currentStep === 1 && datosGeneralesRef.current) {
       const isValid = await datosGeneralesRef.current.submit()
-      
       if (!isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en el formulario')
-        // Opcional: mostrar un toast o mensaje
-        return // No avanzar
+        console.log('⚠️ No se puede avanzar - Hay errores en Datos Generales')
+        return
       }
-      // Si es válido, onNext() se encarga de llamar goToNextStep()
+    } else if (currentStep === 2 && datosFiscalesRef.current) {
+      const isValid = await datosFiscalesRef.current.submit()
+      if (!isValid) {
+        console.log('⚠️ No se puede avanzar - Hay errores en Datos Fiscales')
+        return
+      }
     } else {
-      // En otros pasos, solo avanzar
       goToNextStep()
     }
   }
@@ -76,17 +86,19 @@ function RouteComponent() {
     switch (currentStep) {
       case 1:
         return (
-          <DatosGenerales 
+          <DatosGenerales
+            ref={datosGeneralesRef}
             onNext={handleDatosGeneralesSubmit}
             initialData={formData.datosGenerales}
           />
         )
       case 2:
         return (
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold text-dark mb-4">Paso 2: Datos Fiscales</h3>
-            <p className="text-gray-600">Contenido pendiente de implementar...</p>
-          </div>
+          <DatosFiscales
+            ref={datosFiscalesRef}
+            onNext={handleDatosFiscalesSubmit}
+            initialData={formData.datosFiscales}
+          />
         )
       case 3:
         return (

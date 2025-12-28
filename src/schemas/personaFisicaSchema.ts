@@ -15,27 +15,27 @@ export const datosGeneralesSchema = z.object({
   nombre: z.string()
     .min(1, 'El nombre es requerido')
     .max(100, 'El nombre no puede exceder 100 caracteres')
-    .refine((val) => val.trim().length >= 2, {
+    .refine(val => val.trim().length >= 2, {
       message: 'El nombre debe tener al menos 2 caracteres (sin contar espacios)'
     }),
   
   apellido_paterno: z.string()
     .min(1, 'El apellido paterno es requerido')
     .max(100, 'El apellido paterno no puede exceder 100 caracteres')
-    .refine((val) => val.trim().length >= 2, {
+    .refine(val => val.trim().length >= 2, {
       message: 'El apellido paterno debe tener al menos 2 caracteres (sin contar espacios)'
     }),
   
   apellido_materno: z.string()
     .min(1, 'El apellido materno es requerido')
     .max(100, 'El apellido materno no puede exceder 100 caracteres')
-    .refine((val) => val.trim().length >= 2, {
+    .refine(val => val.trim().length >= 2, {
       message: 'El apellido materno debe tener al menos 2 caracteres (sin contar espacios)'
     }),
   
   genero: z.string()
     .min(1, 'El género es requerido')
-    .refine((val) => ['M', 'F', 'O'].includes(val), {
+    .refine(val => ['M', 'F', 'O'].includes(val), {
       message: 'Selecciona un género válido'
     }),
   
@@ -45,7 +45,7 @@ export const datosGeneralesSchema = z.object({
   profesion: z.string()
     .min(1, 'La profesión es requerida')
     .max(100, 'La profesión no puede exceder 100 caracteres')
-    .refine((val) => val.trim().length >= 2, {
+    .refine(val => val.trim().length >= 2, {
       message: 'La profesión debe tener al menos 2 caracteres'
     }),
   
@@ -120,4 +120,83 @@ export const datosGeneralesDefaultValues: Partial<DatosGeneralesFormData> = {
   curp: '',
   pais_emitio_id: '',
   actividad_economica: ''
+}
+
+
+// Schema reutilizable para domicilios
+export const addressSchema = z.object({
+  tipo_vialidad: z.string()
+    .min(1, 'El tipo de vialidad es requerido'),
+  
+  nombre_vialidad: z.string()
+    .min(1, 'El nombre de la vialidad es requerido')
+    .max(200, 'El nombre no puede exceder 200 caracteres'),
+  
+  numero_exterior: z.string()
+    .optional(),
+  
+  numero_interior: z.string()
+    .optional(),
+  
+  colonia: z.string()
+    .min(1, 'La colonia es requerida')
+    .max(100, 'La colonia no puede exceder 100 caracteres'),
+  
+  alcaldia_municipio: z.string()
+    .min(1, 'La alcaldía/municipio es requerido')
+    .max(100, 'No puede exceder 100 caracteres'),
+  
+  ciudad: z.string()
+    .min(1, 'La ciudad es requerida')
+    .max(100, 'La ciudad no puede exceder 100 caracteres'),
+  
+  estado: z.string()
+    .min(1, 'El estado es requerido'),
+  
+  codigo_postal: z.string()
+    .min(1, 'El código postal es requerido')
+    .regex(/^[0-9]{5}$/, 'El código postal debe tener 5 dígitos'),
+  
+  pais: z.string()
+    .min(1, 'El país es requerido')
+})
+
+// Type inference
+export type AddressData = z.infer<typeof addressSchema>
+
+
+// Schema para Datos Fiscales (Paso 2)
+export const datosFiscalesSchema = z.object({
+  regimen_fiscal: z.string()
+    .min(1, 'El régimen fiscal es requerido'),
+  
+  rfc: z.string()
+    .min(1, 'El RFC es requerido')
+    .regex(/^[A-ZÑ&]{3,4}[0-9]{6}[A-Z0-9]{3}$/, 'RFC inválido (formato: XAXX010101000)')
+    .refine((val) => val.length === 12 || val.length === 13, {
+      message: 'El RFC debe tener 12 o 13 caracteres'
+    }),
+  
+  pais_emitio_id_fiscal: z.string()
+    .optional(),
+  
+  fiel: z.string()
+    .optional(),
+  
+  exento_isr: z.boolean(),
+  
+  exento_iva: z.boolean()
+})
+
+// Type inference
+export type DatosFiscalesFormData = z.infer<typeof datosFiscalesSchema>
+
+// Valores por defecto
+export const datosFiscalesDefaultValues: Partial<DatosFiscalesFormData> = {
+  regimen_fiscal: '',
+  rfc: '',
+  pais_emitio_id_fiscal: '',
+  fiel: '',
+  exento_isr: false,
+  exento_iva: false
 }
