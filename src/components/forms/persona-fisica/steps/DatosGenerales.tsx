@@ -84,6 +84,9 @@ const DatosGenerales = forwardRef<DatosGeneralesHandle, DatosGeneralesProps>(
               <Controller
                 name="nombre"
                 control={control}
+                rules={{
+                  required: 'El nombre es requerido'
+                }}
                 render={({ field, fieldState: { error } }) => (
                   <MessageToasty
                     {...field}
