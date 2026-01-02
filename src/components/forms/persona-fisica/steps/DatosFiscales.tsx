@@ -34,7 +34,7 @@ const DatosFiscales = forwardRef<DatosFiscalesHandle, DatosFiscalesProps>(
     })
 
     const onSubmit = (data: DatosFiscalesFormData) => {
-      console.log('✅ Datos Fiscales:', data)
+      console.log('Datos Fiscales:', data)
       onNext(data)
     }
 
