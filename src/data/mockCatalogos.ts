@@ -71,3 +71,131 @@ export const ACTIVIDADES_ECONOMICAS = [
   { id: 'SIN_ACTIVIDAD', nombre: 'Sin Actividad Económica' },
   { id: 'PF_ACTIVIDADES_PROF', nombre: 'Persona Física con Actividades Profesionales' },
 ]
+
+// Regímenes Fiscales del SAT (algunos ejemplos)
+export const REGIMENES_FISCALES = [
+  { id: '601', nombre: '601 - General de Ley Personas Morales' },
+  { id: '603', nombre: '603 - Personas Morales con Fines no Lucrativos' },
+  { id: '605', nombre: '605 - Sueldos y Salarios e Ingresos Asimilados a Salarios' },
+  { id: '606', nombre: '606 - Arrendamiento' },
+  { id: '607', nombre: '607 - Régimen de Enajenación o Adquisición de Bienes' },
+  { id: '608', nombre: '608 - Demás ingresos' },
+  { id: '610', nombre: '610 - Residentes en el Extranjero sin Establecimiento Permanente en México' },
+  { id: '611', nombre: '611 - Ingresos por Dividendos (socios y accionistas)' },
+  { id: '612', nombre: '612 - Personas Físicas con Actividades Empresariales y Profesionales' },
+  { id: '614', nombre: '614 - Ingresos por intereses' },
+  { id: '615', nombre: '615 - Régimen de los ingresos por obtención de premios' },
+  { id: '616', nombre: '616 - Sin obligaciones fiscales' },
+  { id: '620', nombre: '620 - Sociedades Cooperativas de Producción que optan por diferir sus ingresos' },
+  { id: '621', nombre: '621 - Incorporación Fiscal' },
+  { id: '622', nombre: '622 - Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras' },
+  { id: '623', nombre: '623 - Opcional para Grupos de Sociedades' },
+  { id: '624', nombre: '624 - Coordinados' },
+  { id: '625', nombre: '625 - Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas' },
+  { id: '626', nombre: '626 - Régimen Simplificado de Confianza' },
+]
+
+
+// Otros pasos (Paso 4)
+// Tipos de inversionistas
+export const TIPOS_INVERSIONISTA = [
+  { id: 'PF_NACIONAL', nombre: 'Persona Física Nacional' },
+  { id: 'PF_EXTRANJERA', nombre: 'Persona Física Extranjera' }
+]
+
+// Estatus de Cuenta
+export const ESTATUS_CUENTA = [
+  { id: 'ACTIVA', nombre: 'Activa' },
+  { id: 'INACTIVA', nombre: 'Inactiva' },
+  { id: 'CANCELADA', nombre: 'Cancelada' }
+]
+
+// Tipos de Servicio
+export const TIPOS_SERVICIO = [
+  { id: 'ASESORIA', nombre: 'Asesoria' },
+  { id: 'GESTION', nombre: 'Gestión' },
+  { id: 'MIXTO', nombre: 'Mixto' },
+  { id: 'INSTITUCIONAL', nombre: 'Institucional' }
+]
+
+// Grados de Riesgo
+export const GRADOS_RIESGO = [
+  { id: 'BAJO', nombre: 'Bajo' },
+  { id: 'MEDIO', nombre: 'Medio' },
+  { id: 'ALTO', nombre: 'Alto' }
+]
+
+
+// Actividad Económica
+// Giros/Sectores Económicos
+export const GIROS_ECONOMICOS = [
+  { id: 'AGRICULTURA', nombre: 'Agricultura, ganadería, silvicultura y pesca' },
+  { id: 'MINERIA', nombre: 'Minería' },
+  { id: 'CONSTRUCCION', nombre: 'Construcción' },
+  { id: 'MANUFACTURA', nombre: 'Industrias manufactureras' },
+  { id: 'COMERCIO', nombre: 'Comercio al por mayor y menor' },
+  { id: 'TRANSPORTE', nombre: 'Transportes, correos y almacenamiento' },
+  { id: 'ALOJAMIENTO', nombre: 'Servicios de alojamiento y alimentos' },
+  { id: 'INFORMACION', nombre: 'Información en medios masivos' },
+  { id: 'FINANCIERO', nombre: 'Servicios financieros y de seguros' },
+  { id: 'INMOBILIARIO', nombre: 'Servicios inmobiliarios y de alquiler' },
+  { id: 'PROFESIONAL', nombre: 'Servicios profesionales, científicos y técnicos' },
+  { id: 'CORPORATIVO', nombre: 'Corporativos' },
+  { id: 'APOYO', nombre: 'Servicios de apoyo a los negocios' },
+  { id: 'EDUCACION', nombre: 'Servicios educativos' },
+  { id: 'SALUD', nombre: 'Servicios de salud y asistencia social' },
+  { id: 'ENTRETENIMIENTO', nombre: 'Servicios de esparcimiento, culturales y deportivos' },
+  { id: 'OTROS', nombre: 'Otros servicios excepto actividades gubernamentales' },
+]
+
+// Fuentes de Ingreso (para Sin Actividad)
+export const FUENTES_INGRESO = [
+  { id: 'HERENCIA', nombre: 'Herencia' },
+  { id: 'AHORRO', nombre: 'Ahorro' },
+  { id: 'PENSION', nombre: 'Pensión' },
+  { id: 'APOYO_FAMILIAR', nombre: 'Apoyo familiar' },
+  { id: 'INVERSION', nombre: 'Inversiones' },
+  { id: 'OTRO', nombre: 'Otro' },
+]
+
+// Tipos de Ingresos Adicionales
+export const TIPOS_INGRESOS_ADICIONALES = [
+  { id: 'ARRENDAMIENTO', nombre: 'Arrendamiento' },
+  { id: 'INVERSIONES', nombre: 'Inversiones' },
+  { id: 'DIVIDENDOS', nombre: 'Dividendos' },
+  { id: 'INTERESES', nombre: 'Intereses' },
+  { id: 'REGALIAS', nombre: 'Regalías' },
+  { id: 'HONORARIOS', nombre: 'Honorarios esporádicos' },
+  { id: 'OTRO', nombre: 'Otro' },
+]
+
+
+// Vinculos
+// Tipos de Vínculos Patrimoniales
+export const TIPOS_VINCULOS = [
+  { id: 'ACCIONISTA', nombre: 'Accionista' },
+  { id: 'SOCIO', nombre: 'Socio' },
+  { id: 'PROPIETARIO', nombre: 'Propietario' },
+  { id: 'ADMINISTRADOR', nombre: 'Administrador' },
+  { id: 'DIRECTOR', nombre: 'Director' },
+  { id: 'CONSEJERO', nombre: 'Consejero' },
+  { id: 'APODERADO', nombre: 'Apoderado Legal' },
+  { id: 'OTRO', nombre: 'Otro' },
+]
+
+
+// Beneficiarios
+// Tipos de Parentesco
+export const TIPOS_PARENTESCO = [
+  { id: 'CONYUGE', nombre: 'Cónyuge' },
+  { id: 'HIJO', nombre: 'Hijo/a' },
+  { id: 'PADRE', nombre: 'Padre' },
+  { id: 'MADRE', nombre: 'Madre' },
+  { id: 'HERMANO', nombre: 'Hermano/a' },
+  { id: 'NIETO', nombre: 'Nieto/a' },
+  { id: 'ABUELO', nombre: 'Abuelo/a' },
+  { id: 'TIO', nombre: 'Tío/a' },
+  { id: 'SOBRINO', nombre: 'Sobrino/a' },
+  { id: 'PRIMO', nombre: 'Primo/a' },
+  { id: 'OTRO', nombre: 'Otro' },
+]

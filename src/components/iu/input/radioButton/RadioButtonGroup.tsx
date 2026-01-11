@@ -59,7 +59,7 @@ const RadioButtonGroup = <T = any,>({
                 ${isSelected
                   ? hasError
                     ? 'border-red-300 bg-red-50'
-                    : 'border-[#333] bg-gray-100'
+                    : 'border-primary-500 bg-gray-100'
                   : hasError && isEmpty
                     ? 'border-red-300'
                     : 'border-gray-200'
@@ -85,7 +85,7 @@ const RadioButtonGroup = <T = any,>({
                     ${isSelected
                       ? hasError
                         ? 'border-red-500 bg-red-500'
-                        : 'border-[#333] bg-[#333]'
+                        : 'border-primary-500 bg-primary-500'
                       : hasError && isEmpty
                         ? 'border-red-400 bg-white'
                         : 'border-gray-300 bg-white'

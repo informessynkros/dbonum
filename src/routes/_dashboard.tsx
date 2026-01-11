@@ -1,8 +1,17 @@
 import Navbar from '@/components/iu/navbar/Navbar'
 import Sidebar from '@/components/iu/sidebar/Sidebar'
-import { Outlet, createFileRoute } from '@tanstack/react-router'
+import { useAuthStore } from '@/store/stores/authStore'
+import { Outlet, createFileRoute, redirect } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/_dashboard')({
+  beforeLoad: async () => {
+    const { isAuthenticated } = useAuthStore.getState()
+    
+    if (!isAuthenticated) {
+      // Redirigimos a login
+      throw redirect({ to: '/login' })
+    }
+  },
   component: RouteComponent,
 })
 
