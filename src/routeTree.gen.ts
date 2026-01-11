@@ -15,6 +15,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardSettingsRouteImport } from './routes/_dashboard/settings'
 import { Route as DashboardHomeRouteImport } from './routes/_dashboard/home'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
+import { Route as AuthActivateAccountRouteImport } from './routes/_auth/activate-account'
 import { Route as DashboardFormsIndexRouteImport } from './routes/_dashboard/forms/index'
 import { Route as DashboardFormsPersonaFisicaIndexRouteImport } from './routes/_dashboard/forms/persona-fisica/index'
 
@@ -46,6 +47,11 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AuthRoute,
 } as any)
+const AuthActivateAccountRoute = AuthActivateAccountRouteImport.update({
+  id: '/activate-account',
+  path: '/activate-account',
+  getParentRoute: () => AuthRoute,
+} as any)
 const DashboardFormsIndexRoute = DashboardFormsIndexRouteImport.update({
   id: '/forms/',
   path: '/forms/',
@@ -60,6 +66,7 @@ const DashboardFormsPersonaFisicaIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/activate-account': typeof AuthActivateAccountRoute
   '/login': typeof AuthLoginRoute
   '/home': typeof DashboardHomeRoute
   '/settings': typeof DashboardSettingsRoute
@@ -68,6 +75,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/activate-account': typeof AuthActivateAccountRoute
   '/login': typeof AuthLoginRoute
   '/home': typeof DashboardHomeRoute
   '/settings': typeof DashboardSettingsRoute
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_auth': typeof AuthRouteWithChildren
   '/_dashboard': typeof DashboardRouteWithChildren
+  '/_auth/activate-account': typeof AuthActivateAccountRoute
   '/_auth/login': typeof AuthLoginRoute
   '/_dashboard/home': typeof DashboardHomeRoute
   '/_dashboard/settings': typeof DashboardSettingsRoute
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/activate-account'
     | '/login'
     | '/home'
     | '/settings'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/activate-account'
     | '/login'
     | '/home'
     | '/settings'
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_auth'
     | '/_dashboard'
+    | '/_auth/activate-account'
     | '/_auth/login'
     | '/_dashboard/home'
     | '/_dashboard/settings'
@@ -164,6 +176,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRoute
     }
+    '/_auth/activate-account': {
+      id: '/_auth/activate-account'
+      path: '/activate-account'
+      fullPath: '/activate-account'
+      preLoaderRoute: typeof AuthActivateAccountRouteImport
+      parentRoute: typeof AuthRoute
+    }
     '/_dashboard/forms/': {
       id: '/_dashboard/forms/'
       path: '/forms'
@@ -182,10 +201,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthRouteChildren {
+  AuthActivateAccountRoute: typeof AuthActivateAccountRoute
   AuthLoginRoute: typeof AuthLoginRoute
 }
 
 const AuthRouteChildren: AuthRouteChildren = {
+  AuthActivateAccountRoute: AuthActivateAccountRoute,
   AuthLoginRoute: AuthLoginRoute,
 }
 
