@@ -1,7 +1,10 @@
-import { FileText, Layers, Settings, type LucideIcon } from "lucide-react"
+import { FileText, Layers, Settings, type LucideIcon, LogOut } from "lucide-react"
 import Tooltip from "../tooltip/Tooltip"
 import useNavigation from "@/hooks/useNavigation"
 import { useLocation } from "@tanstack/react-router"
+import useAuth from "@/hooks/useAuth"
+import { useAuthStore } from "@/store/stores/authStore"
+import ButtonIconLoading from "../button/ButtonIconLoading"
 
 
 interface NavItemsProps {
@@ -38,12 +41,22 @@ const NavItem = ({ icon: Icon, label, isActive = false, onClick }: NavItemsProps
 const Sidebar = () => {
 
   // Hook
+  const {
+    closeSession,
+    isPendingCloseSession
+  } = useAuth()
+  const { user } = useAuthStore()
   const { goView } = useNavigation()
   const location = useLocation()
 
-
   const isActive = (path: string) => {
     return location.pathname === path || location.pathname.startsWith(path + '/')
+  }
+
+  const handleLogout = () => {
+    if (user?.checkpoint) {
+      closeSession(user.checkpoint)
+    }
   }
 
   return (
@@ -82,6 +95,13 @@ const Sidebar = () => {
             isActive={isActive('/settings')}
             onClick={() => goView('/settings')}
           />
+        </div>
+
+        <div className="px-4 mt-auto">
+          <ButtonIconLoading
+            icon={LogOut}
+            onClick={handleLogout}
+            isLoading={isPendingCloseSession} />
         </div>
       </div>
     </aside>

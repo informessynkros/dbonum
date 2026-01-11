@@ -1,5 +1,6 @@
 import ButtonLoading from '@/components/iu/button/ButtonLoading'
 import MessageToasty from '@/components/iu/messages/MessageToasty'
+import useAuth from '@/hooks/useAuth'
 import { createFileRoute } from '@tanstack/react-router'
 import { LockIcon, LogIn } from 'lucide-react'
 import { Controller, useForm } from "react-hook-form"
@@ -17,10 +18,15 @@ interface AuthData {
 
 function RouteComponent() {
 
+  const {
+    auth,
+    isPendingAuth
+  } = useAuth()
+
   const { control, handleSubmit, formState: { errors } } = useForm<AuthData>()
 
   const handleDataAuth = (formData: AuthData) => {
-    console.log(`Datos: ${formData}`)
+    auth(formData)
   }
 
   return (
@@ -95,8 +101,7 @@ function RouteComponent() {
                       icon={LogIn}
                       loadingText="Iniciando sesión..."
                       type="submit"
-                      // isLoading={isPendingLogin}
-                      isLoading={false}
+                      isLoading={isPendingAuth}
                     />
                   </form>
                 </div>
