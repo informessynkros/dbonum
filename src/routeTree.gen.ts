@@ -17,6 +17,7 @@ import { Route as DashboardHomeRouteImport } from './routes/_dashboard/home'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthActivateAccountRouteImport } from './routes/_auth/activate-account'
 import { Route as DashboardFormsIndexRouteImport } from './routes/_dashboard/forms/index'
+import { Route as DashboardFormsPersonaMoralIndexRouteImport } from './routes/_dashboard/forms/persona-moral/index'
 import { Route as DashboardFormsPersonaFisicaIndexRouteImport } from './routes/_dashboard/forms/persona-fisica/index'
 
 const DashboardRoute = DashboardRouteImport.update({
@@ -57,6 +58,12 @@ const DashboardFormsIndexRoute = DashboardFormsIndexRouteImport.update({
   path: '/forms/',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardFormsPersonaMoralIndexRoute =
+  DashboardFormsPersonaMoralIndexRouteImport.update({
+    id: '/forms/persona-moral/',
+    path: '/forms/persona-moral/',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 const DashboardFormsPersonaFisicaIndexRoute =
   DashboardFormsPersonaFisicaIndexRouteImport.update({
     id: '/forms/persona-fisica/',
@@ -72,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/settings': typeof DashboardSettingsRoute
   '/forms': typeof DashboardFormsIndexRoute
   '/forms/persona-fisica': typeof DashboardFormsPersonaFisicaIndexRoute
+  '/forms/persona-moral': typeof DashboardFormsPersonaMoralIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -81,6 +89,7 @@ export interface FileRoutesByTo {
   '/settings': typeof DashboardSettingsRoute
   '/forms': typeof DashboardFormsIndexRoute
   '/forms/persona-fisica': typeof DashboardFormsPersonaFisicaIndexRoute
+  '/forms/persona-moral': typeof DashboardFormsPersonaMoralIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -93,6 +102,7 @@ export interface FileRoutesById {
   '/_dashboard/settings': typeof DashboardSettingsRoute
   '/_dashboard/forms/': typeof DashboardFormsIndexRoute
   '/_dashboard/forms/persona-fisica/': typeof DashboardFormsPersonaFisicaIndexRoute
+  '/_dashboard/forms/persona-moral/': typeof DashboardFormsPersonaMoralIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/forms'
     | '/forms/persona-fisica'
+    | '/forms/persona-moral'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/forms'
     | '/forms/persona-fisica'
+    | '/forms/persona-moral'
   id:
     | '__root__'
     | '/'
@@ -124,6 +136,7 @@ export interface FileRouteTypes {
     | '/_dashboard/settings'
     | '/_dashboard/forms/'
     | '/_dashboard/forms/persona-fisica/'
+    | '/_dashboard/forms/persona-moral/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -190,6 +203,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardFormsIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/_dashboard/forms/persona-moral/': {
+      id: '/_dashboard/forms/persona-moral/'
+      path: '/forms/persona-moral'
+      fullPath: '/forms/persona-moral'
+      preLoaderRoute: typeof DashboardFormsPersonaMoralIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/_dashboard/forms/persona-fisica/': {
       id: '/_dashboard/forms/persona-fisica/'
       path: '/forms/persona-fisica'
@@ -217,6 +237,7 @@ interface DashboardRouteChildren {
   DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardFormsIndexRoute: typeof DashboardFormsIndexRoute
   DashboardFormsPersonaFisicaIndexRoute: typeof DashboardFormsPersonaFisicaIndexRoute
+  DashboardFormsPersonaMoralIndexRoute: typeof DashboardFormsPersonaMoralIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
@@ -224,6 +245,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardFormsIndexRoute: DashboardFormsIndexRoute,
   DashboardFormsPersonaFisicaIndexRoute: DashboardFormsPersonaFisicaIndexRoute,
+  DashboardFormsPersonaMoralIndexRoute: DashboardFormsPersonaMoralIndexRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(

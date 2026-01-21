@@ -122,7 +122,7 @@ function DynamicList<T> ({
                   flex items-center justify-center w-8 h-8
                   bg-red-50 hover:bg-red-100 text-red-600
                   rounded-lg transition-all duration-200
-                  hover:scale-110 active:scale-95
+                  hover:scale-110 active:scale-95 cursor-pointer
                 "
                 onMouseEnter={e => {
                   gsap.to(e.currentTarget, {
@@ -166,7 +166,7 @@ function DynamicList<T> ({
             bg-primary-50 hover:bg-primary-100 text-primary-700
             rounded-lg transition-all duration-200 font-medium text-sm
             border-2 border-dashed border-primary-300 hover:border-primary-400
-            hover:scale-[1.02] active:scale-95
+            hover:scale-[1.02] active:scale-95 cursor-pointer
           "
           onMouseEnter={e => {
             gsap.to(e.currentTarget.querySelector('svg'), {

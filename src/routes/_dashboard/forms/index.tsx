@@ -19,7 +19,7 @@ function RouteComponent() {
       title: 'Persona Moral',
       description: 'Registro de empresas, sociedades y asociaciones civiles con estructura corporativa completa.',
       icon: Building2,
-      available: false,
+      available: true,
       route: '/forms/persona-moral'
     },
     {
