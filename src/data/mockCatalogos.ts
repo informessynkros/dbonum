@@ -199,3 +199,39 @@ export const TIPOS_PARENTESCO = [
   { id: 'PRIMO', nombre: 'Primo/a' },
   { id: 'OTRO', nombre: 'Otro' },
 ]
+
+
+// --- Personas morales
+
+// Tipos de inversionistas para persona moral
+export const TIPOS_INVERSIONISTA_PM = [
+  { id: 'PM_NACIONAL', nombre: 'Persona Moral Nacional' },
+  { id: 'PM_EXTRANJERA', nombre: 'Persona Moral Extranjea' }
+]
+
+// Tipos de Títulos para Capital Social
+export const TIPOS_TITULOS = [
+  { id: 'ACCIONES', nombre: 'Acciones' },
+  { id: 'PARTES_SOCIALES', nombre: 'Partes Sociales' },
+]
+
+// Sectores Empresariales
+export const SECTORES_EMPRESARIALES = [
+  { id: 'SERVICIOS', nombre: 'Servicios' },
+  { id: 'COMERCIO', nombre: 'Comercio' },
+  { id: 'INDUSTRIA', nombre: 'Industria' },
+  { id: 'AGROPECUARIO', nombre: 'Agropecuario' },
+  { id: 'GOBIERNO', nombre: 'Gobierno' },
+]
+
+// Formas de Administración
+export const FORMAS_ADMINISTRACION = [
+  { id: 'CONSEJO', nombre: 'Consejo de Administración/Equivalente' },
+  { id: 'ADMINISTRADOR_UNICO', nombre: 'Administrador Único' },
+]
+
+// Tipos de Firma
+export const TIPOS_FIRMA = [
+  { id: 'INDIVIDUAL', nombre: 'Individual' },
+  { id: 'MANCOMUNADA', nombre: 'Mancomunada' },
+]
