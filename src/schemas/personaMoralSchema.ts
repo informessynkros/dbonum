@@ -685,3 +685,232 @@ export const integranteConsejoEmptyItem: IntegranteConsejoData = {
   nacionalidad: '',
   cargo: ''
 }
+
+
+// Schema para Propietario Real (Paso 7)
+export const propietarioRealPMSchema = z.object({
+  nombre: z.string()
+    .min(1, 'El nombre es requerido')
+    .max(100),
+  apellido_paterno: z.string()
+    .min(1, 'El apellido paterno es requerido')
+    .max(100),
+  apellido_materno: z.string()
+    .min(1, 'El apellido materno es requerido')
+    .max(100),
+  genero: z.string()
+    .min(1, 'El género es requerido'),
+  fecha_nacimiento: z.string()
+    .min(1, 'La fecha de nacimiento es requerida'),
+  curp: z.string()
+    .min(1, 'El CURP es requerido')
+    .length(18),
+  pais_emitio_id: z.string()
+    .optional(),
+  pais_nacimiento: z.string()
+    .min(1, 'El país de nacimiento es requerido'),
+  entidad_federativa_nacimiento: z.string()
+    .min(1, 'La entidad federativa es requerida'),
+  nacionalidad: z.string()
+    .min(1, 'La nacionalidad es requerida'),
+  calidad_migratoria: z.string()
+    .optional(),
+  pais_residencia: z.string()
+    .optional(),
+  regimen_fiscal: z.string()
+    .optional(),
+  rfc: z.string()
+    .min(1, 'El RFC es requerido')
+    .regex(/^[A-ZÑ&]{3,4}[0-9]{6}[A-Z0-9]{3}$/),
+  pais_emitio_id_fiscal: z.string()
+    .optional(),
+  fiel: z.string()
+    .optional(),
+  ocupacion_profesion: z.string()
+    .min(1, 'La ocupación es requerida'),
+  telefonos: z.array(z.object({
+    tipo: z.string().min(1),
+    numero: z.string().min(10)
+  })).min(1),
+  email: z.string()
+    .min(1, 'El correo es requerido'),
+  domicilio: addressSchema
+})
+
+export type PropietarioRealPMFormData = z.infer<typeof propietarioRealPMSchema>
+
+export const propietarioRealPMDefaultValues: PropietarioRealPMFormData = {
+  nombre: '',
+  apellido_paterno: '',
+  apellido_materno: '',
+  genero: '',
+  fecha_nacimiento: '',
+  curp: '',
+  pais_emitio_id: '',
+  pais_nacimiento: '',
+  entidad_federativa_nacimiento: '',
+  nacionalidad: '',
+  calidad_migratoria: '',
+  pais_residencia: '',
+  regimen_fiscal: '',
+  rfc: '',
+  pais_emitio_id_fiscal: '',
+  fiel: '',
+  ocupacion_profesion: '',
+  telefonos: [
+    { tipo: 'Móvil', numero: '' }
+  ],
+  email: '',
+  domicilio: {
+    tipo_vialidad: '',
+    nombre_vialidad: '',
+    numero_exterior: '',
+    numero_interior: '',
+    colonia: '',
+    alcaldia_municipio: '',
+    ciudad: '',
+    estado: '',
+    codigo_postal: '',
+    pais: ''
+  }
+}
+
+
+// Uso y movimientos de la cuenta (Paso 8)
+// Schema para Chequera
+export const chequeraSchema = z.object({
+  cuenta: z.string()
+    .min(1, 'La cuenta es requerida'),
+  clave: z.string()
+    .optional(),
+  institucion: z.string()
+    .min(1, 'La institución es requerida'),
+  titular: z.string()
+    .min(1, 'El titular es requerido'),
+  broker: z.string()
+    .optional()
+})
+
+// Schema para PEP
+export const pepSchema = z.object({
+  nombre_completo: z.string()
+    .min(1, 'El nombre es requerido'),
+  cargo_empresa: z.string()
+    .min(1, 'El cargo es requerido'),
+  nombre_institucion_publica: z.string()
+    .min(1, 'La institución es requerida'),
+  nivel: z.string()
+    .min(1, 'El nivel es requerido'),
+  pais_cargo: z.string()
+    .min(1, 'El país es requerido'),
+  cargo_publico: z.string()
+    .min(1, 'El cargo público es requerido'),
+  razones_operacion_mexico: z.string()
+    .optional(),
+  pep_nacional: z.boolean(),
+  pep_extranjera: z.boolean()
+})
+
+export const usoMovimientosPMSchema = z.object({
+  uso_cuenta: z.string()
+    .min(1, 'El uso de cuenta es requerido'),
+  monto_deposito_inicial: z.number()
+    .min(0),
+  numero_desviacion_estandar: z.number()
+    .optional(),
+  numero_depositos_mensuales: z.string()
+    .min(1),
+  numero_retiros_mensuales: z.string()
+    .min(1),
+  validado_por: z.string()
+    .min(1),
+  // Si validado por MONTO
+  monto_promedio_depositos: z.string()
+    .optional(),
+  monto_promedio_retiros: z.string()
+    .optional(),
+  // Si validado por PORCENTAJE
+  porcentaje_promedio_depositos: z.string()
+    .optional(),
+  porcentaje_promedio_retiros: z.string()
+    .optional(),
+  liq_vs_saldo: z.boolean(),
+  maneja_custodia: z.boolean(),
+  corto_efectivo: z.boolean(),
+  // Chequera
+  chequeras: z.array(chequeraSchema)
+    .optional(),
+  // PEP
+  tiene_pep_cargo_actual: z.boolean(),
+  peps_cargo: z.array(pepSchema)
+    .optional(),
+  tiene_pep_relacionado: z.boolean(),
+  peps_relacionados: z.array(pepSchema)
+    .optional()
+})
+
+export type ChequeraData = z.infer<typeof chequeraSchema>
+export type PEPData = z.infer<typeof pepSchema>
+export type UsoMovimientosPMFormData = z.infer<typeof usoMovimientosPMSchema>
+
+export const usoMovimientosPMDefaultValues: UsoMovimientosPMFormData = {
+  
+  uso_cuenta: '',
+  monto_deposito_inicial: 0,
+  numero_desviacion_estandar: undefined,
+  numero_depositos_mensuales: '', 
+  numero_retiros_mensuales: '', 
+  validado_por: '',
+  monto_promedio_depositos: '', 
+  monto_promedio_retiros: '',
+  porcentaje_promedio_depositos: '', 
+  porcentaje_promedio_retiros: '',
+  liq_vs_saldo: false,
+  maneja_custodia: false,
+  corto_efectivo: false,
+  chequeras: [],
+  tiene_pep_cargo_actual: false,
+  peps_cargo: [],
+  tiene_pep_relacionado: false,
+  peps_relacionados: []
+}
+
+export const chequeraEmptyItem: ChequeraData = {
+  cuenta: '',
+  clave: '',
+  institucion: '',
+  titular: '',
+  broker: ''
+}
+
+export const pepEmptyItem: PEPData = {
+  nombre_completo: '',
+  cargo_empresa: '',
+  nombre_institucion_publica: '',
+  nivel: '',
+  pais_cargo: '',
+  cargo_publico: '',
+  razones_operacion_mexico: '',
+  pep_nacional: false,
+  pep_extranjera: false
+}
+
+
+// Schema para Procedencia de Recursos (Paso 9)
+export const procedenciaRecursosPMSchema = z.object({
+  procedencia_recursos: z.array(z.string())
+    .min(1, 'Debes seleccionar al menos una procedencia de recursos'),
+  
+  detalle_recurso: z.string()
+    .min(1, 'El detalle del recurso es requerido')
+    .max(1000, 'El detalle no puede exceder 1000 caracteres')
+})
+
+// Type inference
+export type ProcedenciaRecursosPMFormData = z.infer<typeof procedenciaRecursosPMSchema>
+
+// Valores por defecto
+export const procedenciaRecursosPMDefaultValues: ProcedenciaRecursosPMFormData = {
+  procedencia_recursos: [],
+  detalle_recurso: ''
+}

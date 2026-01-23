@@ -6,14 +6,19 @@ import type { EstructuraCorporativaHandle } from '@/components/forms/persona-mor
 import EstructuraCorporativa from '@/components/forms/persona-moral/steps/EstructuraCorporativa'
 import type { OtrosDatosHandle } from '@/components/forms/persona-moral/steps/OtrosDatos'
 import OtrosDatos from '@/components/forms/persona-moral/steps/OtrosDatos'
+import type { ProcedenciaRecursosHandle } from '@/components/forms/persona-moral/steps/ProcedenciaRecursos'
+import ProcedenciaRecursos from '@/components/forms/persona-moral/steps/ProcedenciaRecursos'
+import type { PropietarioRealHandle } from '@/components/forms/persona-moral/steps/PropietarioReal'
+import PropietarioReal from '@/components/forms/persona-moral/steps/PropietarioReal'
 import type { RepresentantesAdminHandle } from '@/components/forms/persona-moral/steps/RepresentantesAdmin'
 import RepresentantesAdmin from '@/components/forms/persona-moral/steps/RepresentantesAdmin'
 import type { SociosAccionistasHandle } from '@/components/forms/persona-moral/steps/SociosAccionistas'
 import SociosAccionistas from '@/components/forms/persona-moral/steps/SociosAccionistas'
+import UsoMovimientos, { type UsoMovimientosHandle } from '@/components/forms/persona-moral/steps/UsoMovimientos'
 import Stepper from '@/components/iu/wizard/Stepper'
 import WizardNavigation from '@/components/iu/wizard/WizardNavigation'
 import { useWizard } from '@/hooks/useWizard'
-import type { DatosGeneralesPMFormData, DomicilioFiscalPMFormData, EstructuraCorporativaPMFormData, OtrosDatosPMFormData, RepresentantesAdminPMFormData, SociosAccionistasPMFormData } from '@/schemas/personaMoralSchema'
+import type { DatosGeneralesPMFormData, DomicilioFiscalPMFormData, EstructuraCorporativaPMFormData, OtrosDatosPMFormData, ProcedenciaRecursosPMFormData, PropietarioRealPMFormData, RepresentantesAdminPMFormData, SociosAccionistasPMFormData, UsoMovimientosPMFormData } from '@/schemas/personaMoralSchema'
 import { createFileRoute } from '@tanstack/react-router'
 import { useRef, useState } from 'react'
 
@@ -50,6 +55,9 @@ function RouteComponent() {
   const estructuraCorporativaRef = useRef<EstructuraCorporativaHandle>(null)
   const sociosAccionistasRef = useRef<SociosAccionistasHandle>(null)
   const representantesAdminRef = useRef<RepresentantesAdminHandle>(null)
+  const propietarioRealRef = useRef<PropietarioRealHandle>(null)
+  const usoMovimientosRef = useRef<UsoMovimientosHandle>(null)
+  const procedenciaRecursosRef = useRef<ProcedenciaRecursosHandle>(null)
 
   // Estado para guardar todos los datos del formulario
   const [formData, setFormData] = useState<{
@@ -58,10 +66,12 @@ function RouteComponent() {
     otrosDatos?: OtrosDatosPMFormData,
     estructuraCorporativa?: EstructuraCorporativaPMFormData,
     sociosAccionistas?: SociosAccionistasPMFormData,
-    representantesAdmin?: RepresentantesAdminPMFormData
+    representantesAdmin?: RepresentantesAdminPMFormData,
+    propietarioReal?: PropietarioRealPMFormData,
+    usoMovimientos?: UsoMovimientosPMFormData,
+    procedenciaRecursos?: ProcedenciaRecursosPMFormData
   }>({})
 
-  // Handler cuando se completa Datos Generales
   const handleDatosGeneralesSubmit = (data: DatosGeneralesPMFormData) => {
     console.log('Datos Generales PM guardados: ', data)
     setFormData(prev => ({ ...prev, datosGenerales: data }))
@@ -98,6 +108,24 @@ function RouteComponent() {
     goToNextStep()
   }
 
+  const handlePropietarioRealSubmit = (data: PropietarioRealPMFormData) => {
+    console.log('Propietario Real:', data)
+    setFormData(prev => ({ ...prev, propietarioReal: data }))
+    goToNextStep()
+  }
+
+  const handleUsoMovimientosSubmit = (data: UsoMovimientosPMFormData) => {
+    console.log('Uso y Movimientos de la cuenta:', data)
+    setFormData(prev => ({ ...prev, usoMovimientos: data }))
+    goToNextStep()
+  }
+
+  const handleProcedenciaRecursosSubmit = (data: ProcedenciaRecursosPMFormData) => {
+    console.log('Procedencia de Recursos:', data)
+    setFormData(prev => ({ ...prev, procedenciaRecursos: data }))
+    goToNextStep()
+  }
+
   // Handler
   const handleSave = () => {
     console.log('Guardando formulario completo PM: ', formData)
@@ -122,6 +150,15 @@ function RouteComponent() {
       if (!isValid) return
     } else if (currentStep === 6 && representantesAdminRef.current) {
       const isValid = await representantesAdminRef.current.submit()
+      if (!isValid) return
+    } else if (currentStep === 7 && propietarioRealRef.current) {
+      const isValid = await propietarioRealRef.current.submit()
+      if (!isValid) return
+    } else if (currentStep === 8 && usoMovimientosRef.current) {
+      const isValid = await usoMovimientosRef.current.submit()
+      if (!isValid) return
+    } else if (currentStep === 9 && procedenciaRecursosRef.current) {
+      const isValid = await procedenciaRecursosRef.current.submit()
       if (!isValid) return
     } else {
       goToNextStep()
@@ -177,6 +214,30 @@ function RouteComponent() {
             ref={representantesAdminRef}
             onNext={handleRepresentantesAdminSubmit}
             initialData={formData.representantesAdmin}
+          />
+        )
+      case 7:
+        return (
+          <PropietarioReal
+            ref={representantesAdminRef}
+            onNext={handlePropietarioRealSubmit}
+            initialData={formData.propietarioReal}
+          />
+        )
+      case 8:
+        return (
+          <UsoMovimientos
+            ref={representantesAdminRef}
+            onNext={handleUsoMovimientosSubmit}
+            initialData={formData.usoMovimientos}
+          />
+        )
+      case 9:
+        return (
+          <ProcedenciaRecursos
+            ref={representantesAdminRef}
+            onNext={handleProcedenciaRecursosSubmit}
+            initialData={formData.procedenciaRecursos}
           />
         )
       default:
