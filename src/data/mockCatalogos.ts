@@ -235,3 +235,56 @@ export const TIPOS_FIRMA = [
   { id: 'INDIVIDUAL', nombre: 'Individual' },
   { id: 'MANCOMUNADA', nombre: 'Mancomunada' },
 ]
+
+// --- Uso y movimientos de la cuenta
+export const USOS_CUENTA = [
+  { id: 'GASTOS_EMPRESARIALES', nombre: 'Gastos empresariales' },
+  { id: 'GASTOS_PERSONALES', nombre: 'Gastos personales' },
+  { id: 'INVERSION', nombre: 'Inversión' },
+  { id: 'OTRO', nombre: 'Otro' }
+]
+
+export const NUMERO_MOVIMIENTOS = [
+  { id: 'HASTA_5', nombre: 'Hasta 5 movimientos' },
+  { id: 'HASTA_10', nombre: 'Hasta 10 movimientos' },
+  { id: 'HASTA_15', nombre: 'Hasta 15 movimientos' }
+]
+
+export const VALIDACION_TIPO = [
+  { id: 'MONTO', nombre: 'Monto' },
+  { id: 'PORCENTAJE', nombre: 'Porcentaje' }
+]
+
+export const RANGOS_MONTO = [
+  { id: 'HASTA_250K', nombre: '$1.00 - $250,000.00 M.N.' },
+  { id: 'HASTA_2M', nombre: '$250,001.00 - $2,000,000.00 M.N.' },
+  { id: 'HASTA_5M', nombre: '$2,000,001.00 - $5,000,000.00 M.N.' },
+  { id: 'MAS_5M', nombre: 'Más de $5,000,000.00 M.N.' }
+]
+
+export const RANGOS_PORCENTAJE = [
+  { id: 'HASTA_10', nombre: 'Hasta el 10%' },
+  { id: 'HASTA_20', nombre: 'Hasta el 20%' },
+  { id: 'HASTA_30', nombre: 'Hasta el 30%' }
+]
+
+export const NIVELES_PEP = [
+  { id: 'FEDERAL', nombre: 'Federal' },
+  { id: 'ESTATAL', nombre: 'Estatal' },
+  { id: 'LOCAL', nombre: 'Local' },
+  { id: 'INTERNACIONAL', nombre: 'Internacional' }
+]
+
+
+// --- Procedencia de Recursos
+export const PROCEDENCIA_RECURSOS = [
+  { id: 'INVERSIONES', nombre: 'Inversiones' },
+  { id: 'PATRIMONIO', nombre: 'Patrimonio' },
+  { id: 'DONACIONES', nombre: 'Donaciones' },
+  { id: 'RIFAS_SORTEOS', nombre: 'Rifas, sorteos o premios' },
+  { id: 'OBJETO_SOCIAL', nombre: 'Realización del objeto social' },
+  { id: 'PRESUPUESTO_PUBLICO', nombre: 'Presupuesto público' },
+  { id: 'VENTA_ACTIVOS', nombre: 'Venta o renta de activos/bienes' },
+  { id: 'PRESTAMOS', nombre: 'Préstamos' },
+  { id: 'OTRO', nombre: 'Otro' }
+]

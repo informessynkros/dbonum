@@ -501,16 +501,6 @@ const SociosAccionistas = forwardRef<SociosAccionistasHandle, SociosAccionistasP
             </p>
           </div>
         </div>
-
-        {/* Debug de errores */}
-        {Object.keys(errors).length > 0 && (
-          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
-            <h4 className="font-bold text-red-800 mb-2">Errores detectados:</h4>
-            <pre className="text-xs text-red-600">
-              {JSON.stringify(errors, null, 2)}
-            </pre>
-          </div>
-        )}
       </form>
     )
   }
