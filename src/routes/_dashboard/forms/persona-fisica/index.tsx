@@ -124,43 +124,43 @@ function RouteComponent() {
     if (currentStep === 1 && datosGeneralesRef.current) {
       const isValid = await datosGeneralesRef.current.submit()
       if (!isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Datos Generales')
+        console.log('No se puede avanzar - Hay errores en Datos Generales')
         return
       }
     } else if (currentStep === 2 && datosFiscalesRef.current) {
       const isValid = await datosFiscalesRef.current.submit()
       if (!isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Datos Fiscales')
+        console.log('No se puede avanzar - Hay errores en Datos Fiscales')
         return
       }
     } else if (currentStep === 3 && otrosDatosRef.current) {
       const isValid = await otrosDatosRef.current.submit()
       if (!isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Otros Datos')
+        console.log('No se puede avanzar - Hay errores en Otros Datos')
         return
       }
     } else if (currentStep === 4 && domicilioResidencialRef.current) {
       const isValid = await domicilioResidencialRef.current.submit()
       if (isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Domicilio Residencial')
+        console.log('No se puede avanzar - Hay errores en Domicilio Residencial')
         return
       }
     } else if (currentStep === 5 && actividadEconomicaRef.current) {
       const isValid = await actividadEconomicaRef.current.submit()
       if (isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Actividad Económica')
+        console.log('No se puede avanzar - Hay errores en Actividad Económica')
         return
       }
     } else if (currentStep === 6 && vinculosPatrimonialesRef.current) {
       const isValid = await vinculosPatrimonialesRef.current.submit()
       if (isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Vinculos')
+        console.log('No se puede avanzar - Hay errores en Vinculos')
         return
       }
     } else if (currentStep === 7 && beneficiariosRef.current) {
       const isValid = await beneficiariosRef.current.submit()
       if (isValid) {
-        console.log('⚠️ No se puede avanzar - Hay errores en Beneficiarios')
+        console.log('No se puede avanzar - Hay errores en Beneficiarios')
         return
       }
     } else {
@@ -234,7 +234,8 @@ function RouteComponent() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto">
+    // <div className="max-w-7xl mx-auto">
+    <div className="w-auto mx-auto">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-dark mb-2">

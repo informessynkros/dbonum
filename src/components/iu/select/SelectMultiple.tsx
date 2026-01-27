@@ -210,11 +210,11 @@ function SelectMultiple<T extends Option>({
   const handleSelect = (option: T) => {
     let newSelectedOptions: T[]
     if (multiple) {
-      const isCurrentlySelected = selectedOptions.some((selected) => selected[valueKey] === option[valueKey])
+      const isCurrentlySelected = selectedOptions.some(selected => selected[valueKey] === option[valueKey])
 
       if (isCurrentlySelected) {
         // Deseleccionar
-        newSelectedOptions = selectedOptions.filter((selected) => selected[valueKey] !== option[valueKey])
+        newSelectedOptions = selectedOptions.filter(selected => selected[valueKey] !== option[valueKey])
       } else {
         // Seleccionar - verificar límite máximo
         if (maxSelection && selectedOptions.length >= maxSelection) {
@@ -277,7 +277,7 @@ function SelectMultiple<T extends Option>({
     }
   }
 
-  const isSelected = (option: T) => selectedOptions.some((selected) => selected[valueKey] === option[valueKey])
+  const isSelected = (option: T) => selectedOptions.some(selected => selected[valueKey] === option[valueKey])
 
   const isOptionDisabled = (option: T) => {
     return multiple && maxSelection && !isSelected(option) && selectedOptions.length >= maxSelection

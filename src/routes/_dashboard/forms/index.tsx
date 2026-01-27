@@ -26,7 +26,7 @@ function RouteComponent() {
       title: 'Fideicomiso',
       description: 'Registro de fideicomisos con datos del fideicomitente, fideicomisario y estructura fiduciaria.',
       icon: Landmark,
-      available: false,
+      available: true,
       route: '/forms/fideicomiso'
     },
     {
@@ -39,7 +39,8 @@ function RouteComponent() {
   ]
 
   return (
-    <div className="max-w-7xl mx-auto">
+    // <div className="max-w-7xl mx-auto">
+    <div className="w-auto mx-auto">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-dark mb-2">

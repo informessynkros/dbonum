@@ -407,7 +407,7 @@ const EstructuraCorporativa = forwardRef<EstructuraCorporativaHandle, Estructura
                 render={({ field: { onChange }, fieldState: { error } }) => (
                   <SelectMultiple
                     options={TIPOS_TITULOS}
-                    onSelect={(selected) => {
+                    onSelect={selected => {
                       if (selected && typeof selected === 'object' && 'id' in selected) {
                         onChange(selected.id)
                       }

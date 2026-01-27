@@ -81,7 +81,7 @@ const DatosFiscales = forwardRef<DatosFiscalesHandle, DatosFiscalesProps>(
                 render={({ field: { onChange }, fieldState: { error } }) => (
                   <SelectMultiple
                     options={REGIMENES_FISCALES}
-                    onSelect={(selected) => {
+                    onSelect={selected => {
                       if (selected && typeof selected === 'object' && 'id' in selected) {
                         onChange(selected.id)
                       }
@@ -127,7 +127,7 @@ const DatosFiscales = forwardRef<DatosFiscalesHandle, DatosFiscalesProps>(
                 render={({ field: { onChange }, fieldState: { error } }) => (
                   <SelectMultiple
                     options={PAISES}
-                    onSelect={(selected) => {
+                    onSelect={selected => {
                       if (selected && typeof selected === 'object' && 'id' in selected) {
                         onChange(selected.id)
                       }

@@ -246,7 +246,8 @@ function RouteComponent() {
   }
   
   return (
-    <div className="max-w-7xl mx-auto">
+    // <div className="max-w-7xl mx-auto">
+    <div className="w-auto mx-auto">
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-dark mb-2">
