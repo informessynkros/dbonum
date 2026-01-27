@@ -19,6 +19,7 @@ import { Route as AuthActivateAccountRouteImport } from './routes/_auth/activate
 import { Route as DashboardFormsIndexRouteImport } from './routes/_dashboard/forms/index'
 import { Route as DashboardFormsPersonaMoralIndexRouteImport } from './routes/_dashboard/forms/persona-moral/index'
 import { Route as DashboardFormsPersonaFisicaIndexRouteImport } from './routes/_dashboard/forms/persona-fisica/index'
+import { Route as DashboardFormsFideicomisoIndexRouteImport } from './routes/_dashboard/forms/fideicomiso/index'
 
 const DashboardRoute = DashboardRouteImport.update({
   id: '/_dashboard',
@@ -70,6 +71,12 @@ const DashboardFormsPersonaFisicaIndexRoute =
     path: '/forms/persona-fisica/',
     getParentRoute: () => DashboardRoute,
   } as any)
+const DashboardFormsFideicomisoIndexRoute =
+  DashboardFormsFideicomisoIndexRouteImport.update({
+    id: '/forms/fideicomiso/',
+    path: '/forms/fideicomiso/',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/home': typeof DashboardHomeRoute
   '/settings': typeof DashboardSettingsRoute
   '/forms': typeof DashboardFormsIndexRoute
+  '/forms/fideicomiso': typeof DashboardFormsFideicomisoIndexRoute
   '/forms/persona-fisica': typeof DashboardFormsPersonaFisicaIndexRoute
   '/forms/persona-moral': typeof DashboardFormsPersonaMoralIndexRoute
 }
@@ -88,6 +96,7 @@ export interface FileRoutesByTo {
   '/home': typeof DashboardHomeRoute
   '/settings': typeof DashboardSettingsRoute
   '/forms': typeof DashboardFormsIndexRoute
+  '/forms/fideicomiso': typeof DashboardFormsFideicomisoIndexRoute
   '/forms/persona-fisica': typeof DashboardFormsPersonaFisicaIndexRoute
   '/forms/persona-moral': typeof DashboardFormsPersonaMoralIndexRoute
 }
@@ -101,6 +110,7 @@ export interface FileRoutesById {
   '/_dashboard/home': typeof DashboardHomeRoute
   '/_dashboard/settings': typeof DashboardSettingsRoute
   '/_dashboard/forms/': typeof DashboardFormsIndexRoute
+  '/_dashboard/forms/fideicomiso/': typeof DashboardFormsFideicomisoIndexRoute
   '/_dashboard/forms/persona-fisica/': typeof DashboardFormsPersonaFisicaIndexRoute
   '/_dashboard/forms/persona-moral/': typeof DashboardFormsPersonaMoralIndexRoute
 }
@@ -113,6 +123,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/settings'
     | '/forms'
+    | '/forms/fideicomiso'
     | '/forms/persona-fisica'
     | '/forms/persona-moral'
   fileRoutesByTo: FileRoutesByTo
@@ -123,6 +134,7 @@ export interface FileRouteTypes {
     | '/home'
     | '/settings'
     | '/forms'
+    | '/forms/fideicomiso'
     | '/forms/persona-fisica'
     | '/forms/persona-moral'
   id:
@@ -135,6 +147,7 @@ export interface FileRouteTypes {
     | '/_dashboard/home'
     | '/_dashboard/settings'
     | '/_dashboard/forms/'
+    | '/_dashboard/forms/fideicomiso/'
     | '/_dashboard/forms/persona-fisica/'
     | '/_dashboard/forms/persona-moral/'
   fileRoutesById: FileRoutesById
@@ -217,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardFormsPersonaFisicaIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/_dashboard/forms/fideicomiso/': {
+      id: '/_dashboard/forms/fideicomiso/'
+      path: '/forms/fideicomiso'
+      fullPath: '/forms/fideicomiso'
+      preLoaderRoute: typeof DashboardFormsFideicomisoIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
   }
 }
 
@@ -236,6 +256,7 @@ interface DashboardRouteChildren {
   DashboardHomeRoute: typeof DashboardHomeRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardFormsIndexRoute: typeof DashboardFormsIndexRoute
+  DashboardFormsFideicomisoIndexRoute: typeof DashboardFormsFideicomisoIndexRoute
   DashboardFormsPersonaFisicaIndexRoute: typeof DashboardFormsPersonaFisicaIndexRoute
   DashboardFormsPersonaMoralIndexRoute: typeof DashboardFormsPersonaMoralIndexRoute
 }
@@ -244,6 +265,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardHomeRoute: DashboardHomeRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardFormsIndexRoute: DashboardFormsIndexRoute,
+  DashboardFormsFideicomisoIndexRoute: DashboardFormsFideicomisoIndexRoute,
   DashboardFormsPersonaFisicaIndexRoute: DashboardFormsPersonaFisicaIndexRoute,
   DashboardFormsPersonaMoralIndexRoute: DashboardFormsPersonaMoralIndexRoute,
 }

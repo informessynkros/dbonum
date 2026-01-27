@@ -288,3 +288,87 @@ export const PROCEDENCIA_RECURSOS = [
   { id: 'PRESTAMOS', nombre: 'Préstamos' },
   { id: 'OTRO', nombre: 'Otro' }
 ]
+
+export const ACTIVIDADES_VULNERABLES = [
+  { id: 'NO_APLICA', nombre: 'No aplica' },
+  { id: 'OBRAS_ARTE', nombre: 'Obras de arte' },
+  { id: 'METALES_PIEDRAS_PRECIOSAS', nombre: 'Metales y piedras preciosas o joyería' },
+  { id: 'MONEDEROS_CERTIFICADOS', nombre: 'Monederos y certificados de devoluciones o recompensas' },
+  { id: 'TARJETAS_PREPAGADAS', nombre: 'Tarjetas prepagadas, vales o cupones' },
+  { id: 'VEHICULOS', nombre: 'Vehículos aéreos, marítimos o terrestres' },
+  { id: 'SERVIDORES_PUBLICOS', nombre: 'Servidores públicos, fe pública' },
+  { id: 'MUTUO_PRESTAMO', nombre: 'Mutuo, préstamo o créditos (no institución financiera)' },
+  { id: 'BLINDAJE', nombre: 'Blindaje, tarjetas de servicios o de crédito' },
+  { id: 'JUEGOS_APUESTAS', nombre: 'Juegos con apuestas, concursos o sorteos' },
+  { id: 'TRANSMISION_INMUEBLES', nombre: 'Transmisión de derechos sobre inmuebles' },
+  { id: 'RECEPCION_DONATIVOS', nombre: 'Recepción de donativos, derechos personales de uso o goce de inmuebles' },
+  { id: 'DESARROLLO_INMOBILIARIO', nombre: 'Desarrollo inmobiliario' },
+  { id: 'ACTIVOS_VIRTUALES', nombre: 'Activos virtuales' },
+  { id: 'TRASLADO_CUSTODIA', nombre: 'Traslado o custodia de dinero o valores' },
+  { id: 'COMPRAVENTA_INMUEBLES', nombre: 'Compraventa de bienes inmuebles' },
+  { id: 'ADMINISTRACION_RECURSOS', nombre: 'Administración y manejo de recursos, valores o activos (no sujeto supervisado por CNBV)' },
+  { id: 'APORTACION_CAPITAL', nombre: 'Aportaciones de capital u otros recursos para constituir, operar y administrar sociedades' },
+  { id: 'CONSTITUCION_PERSONAS_JURIDICAS', nombre: 'Constitución, escisión, fusión, operación y administración de personas jurídicas u otros vehículos' },
+]
+
+// Tipos de vialidad
+export const TIPOS_VIALIDAD = [
+  { id: 'ANDADOR', nombre: 'Andador' },
+  { id: 'AUTOPISTA', nombre: 'Autopista' },
+  { id: 'AVENIDA', nombre: 'Avenida' },
+  { id: 'BOULEVARD', nombre: 'Boulevard' },
+  { id: 'CALLE', nombre: 'Calle' },
+  { id: 'CALLEJON', nombre: 'Callejón' },
+  { id: 'CALZADA', nombre: 'Calzada' },
+  { id: 'CAMINO', nombre: 'Camino' },
+  { id: 'CARRETERA', nombre: 'Carretera' },
+  { id: 'CERRADA', nombre: 'Cerrada' },
+  { id: 'PASAJE', nombre: 'Pasaje' },
+  { id: 'PRIVADA', nombre: 'Privada' },
+]
+
+export const TIPOS_TELEFONO = [
+  { id: 'MOVIL', nombre: 'Móvil' },
+  { id: 'CASA', nombre: 'Casa' },
+  { id: 'OFICINA', nombre: 'Oficina' },
+]
+
+export const BANCOS = [
+  { id: 'BBVA', nombre: 'BBVA' },
+  { id: 'Santander', nombre: 'Santander' },
+  { id: 'HSBC', nombre: 'HSBC' },
+  { id: 'Banamex', nombre: 'Banamez' },
+  { id: 'Banorte', nombre: 'Banorte' },
+  { id: 'Scotiabank', nombre: 'Scotiabank' }
+]
+
+// Niveles
+export const NIVELES = [
+  { id: "federal", nombre: "Federal" },
+  { id: "estatal", nombre: "Estatal" },
+  { id: "local", nombre: "Local" },
+  { id: "internacional", nombre: "Internacional" },
+]
+
+// Relaciones
+export const RELACIONES = [
+  { id: "conyuge", nombre: "Cónyuge" },
+  { id: "concubino", nombre: "Concubina/Concubinario" },
+  { id: "padre", nombre: "Padre" },
+  { id: "madre", nombre: "Madre" },
+  { id: "hijo", nombre: "Hijo" },
+  { id: "hija", nombre: "Hija" },
+  { id: "hermano", nombre: "Hermano" },
+  { id: "hermana", nombre: "Hermana" },
+  { id: "abuelo", nombre: "Abuelo" },
+  { id: "abuela", nombre: "Abuela" },
+  { id: "nieto", nombre: "Nieto" },
+  { id: "nieta", nombre: "Nieta" },
+  { id: "cunado", nombre: "Cuñado" },
+  { id: "cunada", nombre: "Cuñada" },
+  { id: "suegro", nombre: "Suegro" },
+  { id: "suegra", nombre: "Suegra" },
+  { id: "abuelosPoliticos", nombre: "Abuelos Políticos" },
+  { id: "yerno", nombre: "Yerno" },
+  { id: "nuera", nombre: "Nuera" },
+]

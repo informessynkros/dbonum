@@ -526,7 +526,7 @@ const RepresentantesAdmin = forwardRef<RepresentantesAdminHandle, Representantes
                 render={({ field: { onChange }, fieldState: { error } }) => (
                   <SelectMultiple
                     options={FORMAS_ADMINISTRACION}
-                    onSelect={(selected) => {
+                    onSelect={selected => {
                       if (selected && typeof selected === 'object' && 'id' in selected) {
                         onChange(selected.id)
                       }
@@ -638,7 +638,7 @@ const RepresentantesAdmin = forwardRef<RepresentantesAdminHandle, Representantes
                   render={({ field: { onChange }, fieldState: { error } }) => (
                     <SelectMultiple
                       options={GENEROS}
-                      onSelect={(selected) => {
+                      onSelect={selected => {
                         if (selected && typeof selected === 'object' && 'value' in selected) {
                           onChange(selected.value)
                         }
