@@ -33,7 +33,7 @@ function RouteComponent() {
       title: 'Régimen Simplificado',
       description: 'Formulario simplificado para registros de menor complejidad y riesgo controlado.',
       icon: FileText,
-      available: false,
+      available: true,
       route: '/forms/regimen-simplificado'
     }
   ]
