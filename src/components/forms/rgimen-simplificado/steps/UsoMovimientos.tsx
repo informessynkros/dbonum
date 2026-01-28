@@ -2,7 +2,7 @@ import MessageToasty from "@/components/iu/messages/MessageToasty"
 import SelectMultiple from "@/components/iu/select/SelectMultiple"
 import { 
   usoMovimientosSchema, 
-  type UsoMovimientos as UsoMovimientosType,
+  type UsoMovimientosData,
   UsoCuentaEnum,
   NumeroMovimientosEnum,
   ValidacionPorEnum,
@@ -16,8 +16,8 @@ import { Controller, useForm } from "react-hook-form"
 
 
 interface UsoMovimientosProps {
-  onNext: (data: UsoMovimientosType) => void
-  initialData?: Partial<UsoMovimientosType>
+  onNext: (data: UsoMovimientosData) => void
+  initialData?: Partial<UsoMovimientosData>
 }
 
 export interface UsoMovimientosHandle {
@@ -34,7 +34,7 @@ const UsoMovimientos = forwardRef<UsoMovimientosHandle, UsoMovimientosProps>(
       formState: { errors },
       trigger,
       watch
-    } = useForm<UsoMovimientosType>({
+    } = useForm<UsoMovimientosData>({
       resolver: zodResolver(usoMovimientosSchema),
       defaultValues: initialData || {
         usoCuenta: 'Gastos empresariales',
@@ -52,7 +52,7 @@ const UsoMovimientos = forwardRef<UsoMovimientosHandle, UsoMovimientosProps>(
     const validadoPor = watch('validadoPor')
 
     // Función general
-    const onSubmit = (data: UsoMovimientosType) => {
+    const onSubmit = (data: UsoMovimientosData) => {
       console.log('Uso y movimientos: ', data)
       onNext(data)
     }
